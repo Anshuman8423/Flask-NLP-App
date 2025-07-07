@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Forgot Password{% endblock %}
+{% block content %}
+<h2>Recover Password</h2>
+<form method="post">
+    <input type="email" name="email" placeholder="Enter registered email" required>
+    <input type="submit" value="Get Password">
+</form>
+{% endblock %}

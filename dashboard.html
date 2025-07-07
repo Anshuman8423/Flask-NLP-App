@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Welcome {{ user }}</h2>
+
+<form method="post">
+    <textarea name="text" placeholder="Enter your paragraph..." rows="6" required></textarea>
+    
+    <select name="task" required onchange="toggleEntity(this.value)">
+        <option value="">Select Task</option>
+        <option value="ner">Named Entity Recognition</option>
+        <option value="summarization">Summarization</option>
+        <option value="sentiment">Sentiment Analysis</option>
+    </select>
+
+    <div id="entity-box" style="display:none;">
+        <input type="text" name="entity" placeholder="Enter entity to search (NER)">
+    </div>
+
+    <input type="submit" value="Run NLP">
+</form>
+
+{% if result %}
+    <h3>Result:</h3>
+    <pre>{{ result }}</pre>
+{% endif %}
+
+<script>
+    function toggleEntity(task) {
+        document.getElementById('entity-box').style.display = task === 'ner' ? 'block' : 'none';
+    }
+</script>
+{% endblock %}
